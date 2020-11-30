@@ -19,16 +19,19 @@ public class ROT13 {
 
     public String crypt(String text) throws UnsupportedOperationException {
         StringBuilder result = new StringBuilder();
+        Integer shiftForwardAmount = 13;
+        Integer shiftBackwardAmount = 13;
+
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             if (ch >= 'a' && ch <= 'm') {
-                ch += 13;
+                ch += shiftForwardAmount;
             } else if (ch >= 'A' && ch <= 'M') {
-                ch += 13;
+                ch += shiftForwardAmount;
             } else if (ch >= 'n' && ch <= 'z') {
-                ch -= 13;
+                ch -= shiftBackwardAmount;
             } else if (ch >= 'N' && ch <= 'Z') {
-                ch -= 13;
+                ch -= shiftBackwardAmount;
             }
             result.append(ch);
         }
@@ -48,12 +51,12 @@ public class ROT13 {
         String answer = "";
         char[] stringS = s.toCharArray();
 
-        for(int i=0; i<stringS.length; i++){
-            if(stringS[i] == c){
+        for (int i = 0; i < stringS.length; i++) {
+            if (stringS[i] == c) {
                 startIndex = i;
             }
         }
-        for (int i = startIndex; i<stringS.length; i++){
+        for (int i = startIndex; i < stringS.length; i++) {
             answer = answer + stringS[i];
         }
 
@@ -62,5 +65,4 @@ public class ROT13 {
         }
         return answer;
     }
-
 }

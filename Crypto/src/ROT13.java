@@ -68,21 +68,40 @@ public class ROT13 {
         return answer;
     }
 
-    public void encryptSonnetFile(File file) {
-        try {
+    public void encryptTextFile(File file){
+        try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            BufferedWriter writer = new BufferedWriter(new FileWriter("sonnet18.enc"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("sonnet18.enc")));
             String line;
-            while ((line = reader.readLine()) != null) {
+            while((line = reader.readLine()) != null){
                 writer.write(encrypt(line) + "\n");
             }
-            writer.close();
             reader.close();
-        } catch (FileNotFoundException e) {
+            writer.close();
+        } catch (FileNotFoundException e){
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void decryptTextFile(File file){
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("sonnet18.dec")));
+            String line;
+            while((line = reader.readLine()) != null){
+                writer.write(encrypt(line) + "\n");
+            }
+            reader.close();
+            writer.close();
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 }
 

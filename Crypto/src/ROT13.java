@@ -18,7 +18,7 @@ public class ROT13 {
 
 
     public String crypt(String text) throws UnsupportedOperationException {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             if (ch >= 'a' && ch <= 'm') {
@@ -30,9 +30,9 @@ public class ROT13 {
             } else if (ch >= 'N' && ch <= 'Z') {
                 ch -= 13;
             }
-            result = result + ch;
+            result.append(ch);
         }
-        return result;
+        return result.toString();
     }
 
     public String encrypt(String text) {
